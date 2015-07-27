@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.studentinformation.dao.InstructorDAO;
+import com.studentinformation.dao.RoomDAO;
 import com.studentinformation.dao.StudentDAO;
 import com.studentinformation.dao.SubjectDAO;
 
@@ -21,5 +22,8 @@ public final class BeanFactory {
 	}
 	public static SubjectDAO getSubjectDAO() {
 		return context.getBean(SubjectDAO.class, "subjectDAO");
+	}
+	public static RoomDAO getRoomDAO() {
+		return context.getBean(RoomDAO.class, "roomDAO");
 	}
 }

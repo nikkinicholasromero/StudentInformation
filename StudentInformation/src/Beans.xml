@@ -24,4 +24,8 @@
 	<bean id="subjectDAO" class="com.studentinformation.dao.SubjectDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<bean id="roomDAO" class="com.studentinformation.dao.RoomDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 </beans>
