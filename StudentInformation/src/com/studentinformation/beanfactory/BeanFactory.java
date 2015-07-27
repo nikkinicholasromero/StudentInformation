@@ -12,7 +12,6 @@ public final class BeanFactory {
 	private static ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 	
 	private BeanFactory() {
-		//
 	}
 	
 	public static StudentDAO getStudentDAO() {
