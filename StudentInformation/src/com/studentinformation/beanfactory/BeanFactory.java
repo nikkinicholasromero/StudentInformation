@@ -12,10 +12,12 @@ public final class BeanFactory {
 	private static ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 	
 	private BeanFactory() {
+		//
 	}
 	
 	public static StudentDAO getStudentDAO() {
 		return context.getBean(StudentDAO.class, "studentDAO");
+		//
 	}
 	public static InstructorDAO getInstructorDAO() {
 		return context.getBean(InstructorDAO.class, "instructorDAO");
