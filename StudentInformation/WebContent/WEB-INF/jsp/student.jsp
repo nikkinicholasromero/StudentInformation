@@ -67,9 +67,63 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Students</h1>
+                    <section class="content-header">
+                        <h1>
+                            Student
+                            <small>Control panel</small>
+                        </h1>
+                    </section>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-2 col-xs-12">
+                    <h4 class="box-title">
+                        <a href="#addStudentModal" role="button" class="btn btn-lg btn-success" data-toggle="modal" style="box-shadow: 0px 4px 8px #888888">
+                            ADD STUDENT
+                        </a>
+                    </h4>
+                </div>
+            </div>
+
+            <div id="addStudentModal" class="modal fade">
+                <form id="studentForm" name="studentForm" method="post" action="addNewStudent" commandName="student">
+                    <div class="modal-dialog">
+                        <div class="modal-content" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Student Form</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row" style="margin-bottom:5px">
+                                    <div class="col-md-8 col-xs-12">
+                                        <label>Student ID</label>
+                                        <input type="text" class="form-control input-sm" id="studentId" name="studentId">
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom:5px">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control input-sm" id="firstName" name="firstName">
+                                    </div>
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Middle Name</label>
+                                        <input type="text" class="form-control input-sm" id="middleName" name="middleName">
+                                    </div>
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control input-sm" id="lastName" name="lastName">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="btnSave" onclick="saveNewStudent()" class="btn btn-lg btn-block btn-success">Save</button>
+                                <button type="button" class="btn btn-lg btn-block btn-danger" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div> 
 
             <div class="row">
                 <div class="col-lg-12">
@@ -112,11 +166,16 @@
     <script src="resources/sbadmin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
     <script src="resources/sbadmin/dist/js/sb-admin-2.js"></script>
     <script>
-    $(document).ready(function() {
-        $('#dataTables-students').DataTable({
+        $(document).ready(function() {
+            $('#dataTables-students').DataTable({
                 responsive: true
+            });
         });
-    });
+
+        function saveNewStudent() {
+            $('#studentForm').submit();
+        }
+
     </script>
 </body>
 

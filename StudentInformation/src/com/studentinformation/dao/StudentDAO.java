@@ -36,6 +36,11 @@ public class StudentDAO implements RowMapper<Student> {
 		return students;
 	}
 
+	public void addStudent(Student student) {
+		String SQL = "insert into student (student_id, first_name, middle_name, last_name) values (?, ?, ?, ?)";
+		jdbcTemplate.update(SQL, student.getStudentId(), student.getFirstName(), student.getMiddleName(), student.getLastName());
+	}
+
 	@Override
 	public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Student student = new Student();

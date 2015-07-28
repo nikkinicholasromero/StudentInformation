@@ -14,4 +14,9 @@ public final class StudentService {
 		StudentDAO dao = BeanFactory.getStudentDAO();
 		return dao.getAllStudents();
 	}
+	
+	public static void addStudent(Student student) {
+		StudentDAO dao = BeanFactory.getStudentDAO();
+		dao.addStudent(student);
+	}
 }
