@@ -132,17 +132,18 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-instructors">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Instructor ID</th>
                                             <th>Name</th>
+                                            <th colspan="2">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${instructors}" var="instructor">
 	                                        <tr>
-	                                            <td><c:out value="${instructor.id}"/></td>
 	                                            <td><c:out value="${instructor.instructorId}"/></td>
 	                                            <td><c:out value="${instructor.lastName}"/>, <c:out value="${instructor.firstName}"/> <c:out value="${instructor.middleName}"/></td>
+                                        		<td style="width: 70px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat" /></td>
+                                       			<td style="width: 70px;"><input type="button" value="Delete" class="btn btn-xs btn-block btn-flat" /></td>
 	                                        </tr>
                                         </c:forEach>
                                     </tbody>

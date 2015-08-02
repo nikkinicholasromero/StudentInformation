@@ -123,6 +123,7 @@
                                         <tr>
                                             <th>Subject Code</th>
                                             <th>Title</th>
+                                            <th colspan="2">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -130,6 +131,8 @@
 	                                        <tr>
 	                                            <td><c:out value="${subject.subjectCode}"/></td>
 	                                            <td><c:out value="${subject.title}"/></td>
+                                        		<td style="width: 70px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat" /></td>
+                                       			<td style="width: 70px;"><input type="button" value="Delete" class="btn btn-xs btn-block btn-flat" /></td>
 	                                        </tr>
                                         </c:forEach>
                                     </tbody>

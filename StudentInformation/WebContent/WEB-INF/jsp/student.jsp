@@ -67,12 +67,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <section class="content-header">
-                        <h1>
-                            Student
-                            <small>Control panel</small>
-                        </h1>
-                    </section>
+                    <h1 class="page-header">Student</h1>
                 </div>
             </div>
 
@@ -136,17 +131,18 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-students">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Student ID</th>
                                             <th>Name</th>
+                                            <th colspan="2">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${students}" var="student">
 	                                        <tr>
-	                                            <td><c:out value="${student.id}"/></td>
 	                                            <td><c:out value="${student.studentId}"/></td>
 	                                            <td><c:out value="${student.lastName}"/>, <c:out value="${student.firstName}"/> <c:out value="${student.middleName}"/></td>
+	                                        	<td style="width: 70px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat" /></td>
+	                                        	<td style="width: 70px;"><input type="button" value="Delete" class="btn btn-xs btn-block btn-flat" /></td>
 	                                        </tr>
                                         </c:forEach>
                                     </tbody>
