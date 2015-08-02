@@ -19,4 +19,11 @@ public final class StudentService {
 		StudentDAO dao = BeanFactory.getStudentDAO();
 		dao.addStudent(student);
 	}
+	
+	public static void deleteStudentById(int id) {
+		StudentDAO dao = BeanFactory.getStudentDAO();
+		dao.deleteStudentById(id);
+	}
+	
+	
 }

@@ -41,6 +41,11 @@ public class StudentDAO implements RowMapper<Student> {
 		jdbcTemplate.update(SQL, student.getStudentId(), student.getFirstName(), student.getMiddleName(), student.getLastName());
 	}
 
+	public void deleteStudentById(int id) {
+		String SQL = "delete from student where id = ?";
+		jdbcTemplate.update(SQL, id);
+	}
+	
 	@Override
 	public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Student student = new Student();
