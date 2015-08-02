@@ -36,6 +36,11 @@ public class RoomDAO implements RowMapper<Room> {
 		return rooms;
 	}
 
+	public void addRoom(Room room) {
+		String SQL = "insert into room(room_code, name) values (?, ?)";
+		jdbcTemplate.update(SQL, room.getRoomCode(), room.getName());
+	}
+
 	@Override
 	public Room mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Room room = new Room();

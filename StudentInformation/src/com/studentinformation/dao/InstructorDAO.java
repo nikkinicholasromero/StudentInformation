@@ -36,6 +36,11 @@ public class InstructorDAO implements RowMapper<Instructor> {
 		return instructors;
 	}
 
+	public void addInstructor(Instructor instructor) {
+		String SQL = "insert into instructor (instructor_id, first_name, middle_name, last_name) values (?, ?, ?, ?)";
+		jdbcTemplate.update(SQL, instructor.getInstructorId(), instructor.getFirstName(), instructor.getMiddleName(), instructor.getLastName());
+	}
+
 	@Override
 	public Instructor mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Instructor instructor = new Instructor();

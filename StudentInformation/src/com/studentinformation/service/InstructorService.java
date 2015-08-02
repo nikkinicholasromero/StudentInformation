@@ -14,4 +14,9 @@ public final class InstructorService {
 		InstructorDAO dao = BeanFactory.getInstructorDAO();
 		return dao.getAllInstructors();
 	}
+	
+	public static void addInstructor(Instructor instructor) {
+		InstructorDAO dao = BeanFactory.getInstructorDAO();
+		dao.addInstructor(instructor);
+	}
 }

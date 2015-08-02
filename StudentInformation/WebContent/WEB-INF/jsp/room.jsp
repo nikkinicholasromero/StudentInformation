@@ -72,6 +72,45 @@
             </div>
 
             <div class="row">
+                <div class="col-md-2 col-xs-12">
+                    <h4 class="box-title">
+                        <a href="#addRoomModal" role="button" class="btn btn-lg btn-success" data-toggle="modal" style="box-shadow: 0px 4px 8px #888888">
+                            ADD ROOM
+                        </a>
+                    </h4>
+                </div>
+            </div>
+
+            <div id="addRoomModal" class="modal fade">
+                <form id="roomForm" name="roomForm" method="post" action="addNewRoom" commandName="room">
+                    <div class="modal-dialog">
+                        <div class="modal-content" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Room Form</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row" style="margin-bottom:5px">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Room Code</label>
+                                        <input type="text" class="form-control input-sm" id="roomCode" name="roomCode">
+                                    </div>
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control input-sm" id="name" name="name">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="btnSave" onclick="saveNewRoom()" class="btn btn-lg btn-block btn-success">Save</button>
+                                <button type="button" class="btn btn-lg btn-block btn-danger" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+					</div>               
+                </form>
+            </div> 
+
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -79,10 +118,9 @@
                         </div>
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-students">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-rooms">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Room Code</th>
                                             <th>Name</th>
                                         </tr>
@@ -90,7 +128,6 @@
                                     <tbody>
                                         <c:forEach items="${rooms}" var="room">
 	                                        <tr>
-	                                            <td><c:out value="${room.id}"/></td>
 	                                            <td><c:out value="${room.roomCode}"/></td>
 	                                            <td><c:out value="${room.name}"/></td>
 	                                        </tr>
@@ -117,6 +154,10 @@
                 responsive: true
         });
     });
+
+    function saveNewRoom() {
+        $('#roomForm').submit();
+    } 
     </script>
 </body>
 

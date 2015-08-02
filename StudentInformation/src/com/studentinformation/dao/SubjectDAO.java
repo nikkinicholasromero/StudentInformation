@@ -36,6 +36,11 @@ public class SubjectDAO implements RowMapper<Subject> {
 		return subjects;
 	}
 
+	public void addSubject(Subject subject) {
+		String SQL = "insert into subject(subject_code, title) values (?, ?)";
+		jdbcTemplate.update(SQL, subject.getSubjectCode(), subject.getTitle());
+	}
+
 	@Override
 	public Subject mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Subject subject = new Subject();

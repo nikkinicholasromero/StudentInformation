@@ -14,4 +14,9 @@ public final class SubjectService {
 		SubjectDAO dao = BeanFactory.getSubjectDAO();
 		return dao.getAllSubjects();
 	}
+	
+	public static void addSubject(Subject subject) {
+		SubjectDAO dao = BeanFactory.getSubjectDAO();
+		dao.addSubject(subject);
+	}
 }

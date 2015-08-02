@@ -72,6 +72,45 @@
             </div>
 
             <div class="row">
+                <div class="col-md-2 col-xs-12">
+                    <h4 class="box-title">
+                        <a href="#addSubjectModal" role="button" class="btn btn-lg btn-success" data-toggle="modal" style="box-shadow: 0px 4px 8px #888888">
+                            ADD SUBJECT
+                        </a>
+                    </h4>
+                </div>
+            </div>
+
+            <div id="addSubjectModal" class="modal fade">
+                <form id="subjectForm" name="subjectForm" method="post" action="addNewSubject" commandName="subject">
+                    <div class="modal-dialog">
+                        <div class="modal-content" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Subject Form</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row" style="margin-bottom:5px">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Subject Code</label>
+                                        <input type="text" class="form-control input-sm" id="subjectCode" name="subjectCode">
+                                    </div>
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Title</label>
+                                        <input type="text" class="form-control input-sm" id="title" name="title">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="btnSave" onclick="saveNewSubject()" class="btn btn-lg btn-block btn-success">Save</button>
+                                <button type="button" class="btn btn-lg btn-block btn-danger" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+					</div>               
+                </form>
+            </div> 
+
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -82,7 +121,6 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-students">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Subject Code</th>
                                             <th>Title</th>
                                         </tr>
@@ -90,7 +128,6 @@
                                     <tbody>
                                         <c:forEach items="${subjects}" var="subject">
 	                                        <tr>
-	                                            <td><c:out value="${subject.id}"/></td>
 	                                            <td><c:out value="${subject.subjectCode}"/></td>
 	                                            <td><c:out value="${subject.title}"/></td>
 	                                        </tr>
@@ -117,6 +154,10 @@
                 responsive: true
         });
     });
+
+    function saveNewSubject() {
+        $('#subjectForm').submit();
+    }
     </script>
 </body>
 

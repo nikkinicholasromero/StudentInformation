@@ -72,6 +72,56 @@
             </div>
 
             <div class="row">
+                <div class="col-md-2 col-xs-12">
+                    <h4 class="box-title">
+                        <a href="#addInstructorModal" role="button" class="btn btn-lg btn-success" data-toggle="modal" style="box-shadow: 0px 4px 8px #888888">
+                            ADD INSTRUCTOR
+                        </a>
+                    </h4>
+                </div>
+            </div>
+
+            <div id="addInstructorModal" class="modal fade">
+                <form id="instructorForm" name="instructorForm" method="post" action="addNewInstructor" commandName="instructor">
+                    <div class="modal-dialog">
+                        <div class="modal-content" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Instructor Form</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row" style="margin-bottom:5px">
+                                    <div class="col-md-8 col-xs-12">
+                                        <label>Instructor ID</label>
+                                        <input type="text" class="form-control input-sm" id="instructorId" name="instructorId">
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom:5px">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control input-sm" id="firstName" name="firstName">
+                                    </div>
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Middle Name</label>
+                                        <input type="text" class="form-control input-sm" id="middleName" name="middleName">
+                                    </div>
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control input-sm" id="lastName" name="lastName">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="btnSave" onclick="saveNewInstructor()" class="btn btn-lg btn-block btn-success">Save</button>
+                                <button type="button" class="btn btn-lg btn-block btn-danger" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div> 
+            
+
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -117,7 +167,10 @@
                 responsive: true
         });
     });
-    </script>
+
+    function saveNewInstructor() {
+        $('#instructorForm').submit();
+    }    </script>
 </body>
 
 </html>
