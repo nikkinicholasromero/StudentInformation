@@ -41,6 +41,11 @@ public class InstructorDAO implements RowMapper<Instructor> {
 		jdbcTemplate.update(SQL, instructor.getInstructorId(), instructor.getFirstName(), instructor.getMiddleName(), instructor.getLastName());
 	}
 
+	public void deleteInstructorById(int id) {
+		String SQL = "delete from instructor where id = ?";
+		jdbcTemplate.update(SQL, id);
+	}
+
 	@Override
 	public Instructor mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Instructor instructor = new Instructor();

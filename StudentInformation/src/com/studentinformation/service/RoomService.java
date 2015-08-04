@@ -19,4 +19,9 @@ public final class RoomService {
 		RoomDAO dao = BeanFactory.getRoomDAO();
 		dao.addRoom(room);
 	}
+	
+	public static void deleteRoomById(int id) {
+		RoomDAO dao = BeanFactory.getRoomDAO();
+		dao.deleteRoomById(id);
+	}
 }

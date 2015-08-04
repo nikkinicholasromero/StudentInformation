@@ -19,4 +19,11 @@ public final class SubjectService {
 		SubjectDAO dao = BeanFactory.getSubjectDAO();
 		dao.addSubject(subject);
 	}
+	
+	public static void deleteSubjectById(int id) {
+		SubjectDAO dao = BeanFactory.getSubjectDAO();
+		dao.deleteSubject(id);
+	}
+	
+	
 }

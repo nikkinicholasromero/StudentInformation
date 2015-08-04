@@ -41,6 +41,11 @@ public class RoomDAO implements RowMapper<Room> {
 		jdbcTemplate.update(SQL, room.getRoomCode(), room.getName());
 	}
 
+	public void deleteRoomById(int id) {
+		String SQL = "delete from room where id = ?";
+		jdbcTemplate.update(SQL, id);
+	}
+
 	@Override
 	public Room mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Room room = new Room();

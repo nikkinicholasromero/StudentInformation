@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.studentinformation.domainobject.Room;
@@ -28,6 +29,18 @@ public class RoomController {
 		ModelAndView modelAndView = new ModelAndView("room");
 
 		RoomService.addRoom(room);
+
+		List<Room> rooms = RoomService.getAllRooms();
+		modelAndView.addObject("rooms", rooms);
+
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/deleteRoom", method=RequestMethod.POST)
+	public ModelAndView deleteRoom(@RequestParam("deleteId") int deleteId) {
+		ModelAndView modelAndView = new ModelAndView("room");
+		
+		RoomService.deleteRoomById(deleteId);
 
 		List<Room> rooms = RoomService.getAllRooms();
 		modelAndView.addObject("rooms", rooms);

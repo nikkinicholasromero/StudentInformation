@@ -110,6 +110,29 @@
                 </form>
             </div> 
 
+            <div id="deleteModal" class="modal fade">
+                <form id="deleteForm" name="deleteForm" method="post" action="deleteRoom">
+	                <div class="modal-dialog" style="width:30%">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                            <h4 class="modal-title">Confirmation</h4>
+	                        </div>
+	                        <div class="modal-body">
+	                            <h4>Are you sure you want to delete this record?</h4>
+	                            <p class="text-warning"><small>You cannot recover deleted records</small></p>
+	                            <input type="hidden" id="deleteId" name="deleteId" value="">
+	                        </div>
+	                        <div class="modal-footer">
+	                            <button type="submit" class="btn btn-lg btn-block btn-danger">Delete</button>
+	                            <button type="button" class="btn btn-lg btn-block btn-default" data-dismiss="modal">Cancel</button>
+	                        </div>
+	                    </div>
+	                </div>
+                </form>
+            </div>
+            
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -131,8 +154,8 @@
 	                                        <tr>
 	                                            <td><c:out value="${room.roomCode}"/></td>
 	                                            <td><c:out value="${room.name}"/></td>
-                                        		<td style="width: 70px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat" /></td>
-                                       			<td style="width: 70px;"><input type="button" value="Delete" class="btn btn-xs btn-block btn-flat" /></td>
+	                                       		<td style="width: 70px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat" /></td>
+                                        		<td style="width: 70px;"><input type="button" value="Delete" class="btn btn-xs btn-block btn-flat" data-toggle="modal" data-target="#deleteModal" data-id="${room.id}"/></td>
 	                                        </tr>
                                         </c:forEach>
                                     </tbody>
@@ -156,6 +179,11 @@
         $('#dataTables-subjects').DataTable({
                 responsive: true
         });
+    });
+    
+    $('#deleteModal').on('show.bs.modal', function(e) {
+        var id = $(e.relatedTarget).data('id');
+        $('#deleteId').attr("value", id);
     });
 
     function saveNewRoom() {

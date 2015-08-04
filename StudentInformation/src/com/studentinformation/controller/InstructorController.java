@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.studentinformation.domainobject.Instructor;
@@ -28,6 +29,18 @@ public class InstructorController {
 		ModelAndView modelAndView = new ModelAndView("instructor");
 		
 		InstructorService.addInstructor(instructor);
+
+		List<Instructor> instructors = InstructorService.getAllInstructors();
+		modelAndView.addObject("instructors", instructors);
+
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/deleteInstructor", method=RequestMethod.POST)
+	public ModelAndView deleteInstructor(@RequestParam("deleteId") int deleteId) {
+		ModelAndView modelAndView = new ModelAndView("instructor");
+		
+		InstructorService.deleteInstructorById(deleteId);
 
 		List<Instructor> instructors = InstructorService.getAllInstructors();
 		modelAndView.addObject("instructors", instructors);
