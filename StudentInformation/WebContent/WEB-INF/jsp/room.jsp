@@ -112,7 +112,7 @@
 
             <div id="deleteModal" class="modal fade">
                 <form id="deleteForm" name="deleteForm" method="post" action="deleteRoom">
-	                <div class="modal-dialog" style="width:30%">
+	                <div class="modal-dialog">
 	                    <div class="modal-content">
 	                        <div class="modal-header">
 	                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -146,7 +146,8 @@
                                         <tr>
                                             <th>Room Code</th>
                                             <th>Name</th>
-                                            <th colspan="2">Action</th>
+                                            <th>Update</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -154,8 +155,8 @@
 	                                        <tr>
 	                                            <td><c:out value="${room.roomCode}"/></td>
 	                                            <td><c:out value="${room.name}"/></td>
-	                                       		<td style="width: 70px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat" /></td>
-                                        		<td style="width: 70px;"><input type="button" value="Delete" class="btn btn-xs btn-block btn-flat" data-toggle="modal" data-target="#deleteModal" data-id="${room.id}"/></td>
+	                                       		<td style="width: 100px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat" /></td>
+                                        		<td style="width: 100px;"><input type="button" value="Delete" class="btn btn-xs btn-block btn-flat" data-toggle="modal" data-target="#deleteModal" data-id="${room.id}"/></td>
 	                                        </tr>
                                         </c:forEach>
                                     </tbody>
