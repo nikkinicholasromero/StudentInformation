@@ -8,7 +8,7 @@ public final class JSONUtility {
 	private JSONUtility() {
 	}
 	
-	public static String convertToJSON(Object object) throws JsonProcessingException {
+	public static String parseJSON(Object object) throws JsonProcessingException {
 		ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 		String json = objectWriter.writeValueAsString(object);
 		return json;

@@ -45,6 +45,6 @@ public class StudentController {
 	@RequestMapping(value = "/getStudentByStudentId", method = RequestMethod.POST)
 	public @ResponseBody String getStudentByStudentId(@RequestParam("studentId") String studentId) throws JsonProcessingException {
 		Student student = StudentService.getStudentByStudentId(studentId);
-		return JSONUtility.convertToJSON(student);
+		return JSONUtility.parseJSON(student);
 	}
 }
