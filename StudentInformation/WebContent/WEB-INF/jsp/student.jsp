@@ -80,66 +80,67 @@
                     </h4>
                 </div>
             </div>
+            
+            <div id="successNotificationDiv" class="alert alert-success alert-dismissable" style="display:none">
+			    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			    <p id="successNotificationMessage"></p>
+			</div>
 
             <div id="addStudentModal" class="modal fade">
-                <form id="studentForm" name="studentForm" method="post" action="addNewStudent" commandName="student">
-                    <div class="modal-dialog">
-                        <div class="modal-content" >
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">Student Form</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row" style="margin-bottom:5px">
-                                    <div class="col-md-8 col-xs-12">
-                                        <label>Student ID</label>
-                                        <input type="text" class="form-control input-sm" id="studentId" name="studentId">
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-bottom:5px">
-                                    <div class="col-md-4 col-xs-12">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control input-sm" id="firstName" name="firstName">
-                                    </div>
-                                    <div class="col-md-4 col-xs-12">
-                                        <label>Middle Name</label>
-                                        <input type="text" class="form-control input-sm" id="middleName" name="middleName">
-                                    </div>
-                                    <div class="col-md-4 col-xs-12">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control input-sm" id="lastName" name="lastName">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-lg btn-block btn-success" id="btnSave" onclick="saveNewStudent()" >Save</button>
-                                <button type="button" class="btn btn-lg btn-block btn-danger" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                 <div class="modal-dialog">
+                     <div class="modal-content" >
+                         <div class="modal-header">
+                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                             <h4 class="modal-title">Student Form</h4>
+                         </div>
+                         <div class="modal-body">
+                             <div class="row" style="margin-bottom:5px">
+                                 <div class="col-md-8 col-xs-12">
+                                     <label>Student ID</label>
+                                     <input type="text" class="form-control input-sm" id="studentId" name="studentId" value="">
+                                 </div>
+                             </div>
+                             <div class="row" style="margin-bottom:5px">
+                                 <div class="col-md-4 col-xs-12">
+                                     <label>First Name</label>
+                                     <input type="text" class="form-control input-sm" id="firstName" name="firstName">
+                                 </div>
+                                 <div class="col-md-4 col-xs-12">
+                                     <label>Middle Name</label>
+                                     <input type="text" class="form-control input-sm" id="middleName" name="middleName">
+                                 </div>
+                                 <div class="col-md-4 col-xs-12">
+                                     <label>Last Name</label>
+                                     <input type="text" class="form-control input-sm" id="lastName" name="lastName">
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="modal-footer">
+                             <button type="button" class="btn btn-lg btn-block btn-success" id="btnSave" onclick="saveNewStudent()" >Save</button>
+                             <button type="button" class="btn btn-lg btn-block btn-danger" data-dismiss="modal">Cancel</button>
+                         </div>
+                     </div>
+                 </div>
             </div> 
 
             <div id="deleteModal" class="modal fade">
-                <form id="deleteForm" name="deleteForm" method="post" action="deleteStudent">
-	                <div class="modal-dialog">
-	                    <div class="modal-content">
-	                        <div class="modal-header">
-	                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	                            <h4 class="modal-title">Confirmation</h4>
-	                        </div>
-	                        <div class="modal-body">
-	                            <h4>Are you sure you want to delete this record?</h4>
-	                            <p class="text-warning"><small>You cannot recover deleted records</small></p>
-	                            <input type="hidden" id="deleteId" name="deleteId" value="">
-	                        </div>
-	                        <div class="modal-footer">
-	                            <button type="submit" class="btn btn-lg btn-block btn-danger">Delete</button>
-	                            <button type="button" class="btn btn-lg btn-block btn-default" data-dismiss="modal">Cancel</button>
-	                        </div>
+	            <div class="modal-dialog">
+	                <div class="modal-content">
+	                    <div class="modal-header">
+	                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                        <h4 class="modal-title">Confirmation</h4>
+	                    </div>
+	                    <div class="modal-body">
+	                        <h4>Are you sure you want to delete this record?</h4>
+	                        <p class="text-warning"><small>You cannot recover deleted records</small></p>
+	                        <input type="hidden" id="deleteId" name="deleteId" value="">
+	                    </div>
+	                    <div class="modal-footer">
+	                           <button type="button" class="btn btn-lg btn-block btn-danger" id="btnDelete" onclick="deleteStudent()">Delete</button>
+	                        <button type="button" class="btn btn-lg btn-block btn-default" data-dismiss="modal">Cancel</button>
 	                    </div>
 	                </div>
-                </form>
+	            </div>
             </div>
 
             <div class="row">
@@ -161,7 +162,7 @@
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${students}" var="student">
-	                                        <tr>
+	                                        <tr id="studentId${student.id}">
 	                                            <td><c:out value="${student.studentId}"/></td>
 	                                            <td><c:out value="${student.lastName}"/>, <c:out value="${student.firstName}"/> <c:out value="${student.middleName}"/></td>
 	                                        	<td style="width: 100px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat" /></td>
@@ -196,11 +197,79 @@
             $('#deleteId').attr("value", id);
         });
 
+        
+        $('#addStudentModal').on('show.bs.modal', function(e) {
+        	$('#studentId').val("");
+        	$('#firstName').val("");
+        	$('#middleName').val("");
+        	$('#lastName').val("");
+        });
+        
         function saveNewStudent() {
-            $('#studentForm').submit();
+        	var studentId = $("#studentId").val();
+        	var firstName = $("#firstName").val();
+        	var middleName = $("#middleName").val();
+        	var lastName = $("#lastName").val();
+			$.ajax({
+   		        type: 'POST',
+   		        url:  'addNewStudent',
+   		        data: {'studentId':studentId,'firstName':firstName,'middleName':middleName,'lastName':lastName},
+   		        async: true,
+   		        success: function(result) {
+   		        	addNewStudentToTable(studentId);
+   		        	$('#addStudentModal').modal('toggle');
+   		        	$('#successNotificationDiv').css('display', 'block');
+   		        	$('#successNotificationMessage').text("Successfully added new student");
+   		        },
+   		        error: function(jqXHR, textStatus, errorThrown) {
+   		        	alert(jqXHR.status + ' ' + jqXHR.responseText);
+   		        }
+   		   });
         }
 
-    </script>
+        function deleteStudent() {
+        	var deleteId = $("#deleteId").attr("value");
+			$.ajax({
+   		        type: 'POST',
+   		        url:  'deleteStudent',
+   		        data: {'deleteId':deleteId},
+   		        async: true,
+   		        success: function(result) {
+   		         	$('#studentId' + deleteId).remove();
+   		        	$('#deleteModal').modal('toggle');
+   		        	$('#successNotificationDiv').css('display', 'block');
+   		        	$('#successNotificationMessage').text("Successfully delete student");
+   		        },
+   		        error: function(jqXHR, textStatus, errorThrown) {
+   		        	alert(jqXHR.status + ' ' + jqXHR.responseText);
+   		        }
+   		   });
+        }
+        
+        function addNewStudentToTable(studentId) {
+        	$.ajax({
+   		        type: 'POST',
+   		        url:  'getStudentByStudentId',
+   		        data: {'studentId':studentId},
+   		        dataType: 'json',
+   		        async: true,
+   		        success: function(result) {
+					var row = '<tr id="studentId' + result.id + '">'
+					row += '<td>' + result.studentId + '</td>';
+					row += '<td>' + result.lastName + ', ' + result.firstName + ' ' + result.middleName + '</td>';
+					row += '<td style="width: 100px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat" /></td>';
+					row += '<td style="width: 100px;"><input type="button" value="Delete" class="btn btn-xs btn-block btn-flat" data-toggle="modal" data-target="#deleteModal" data-id="' + result.id + '"/></td>';
+					row += '</tr>';
+   		        	$('#dataTables-students tr:last').after(row);
+   		        },
+   		        error: function(jqXHR, textStatus, errorThrown) {
+   		        	alert(jqXHR.status + ' ' + jqXHR.responseText);
+   		        	alert(errorThrown);
+   		        }
+   		   });
+        }
+        
+	</script>
 </body>
 
 </html>
