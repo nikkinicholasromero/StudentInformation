@@ -80,66 +80,67 @@
                     </h4>
                 </div>
             </div>
+            
+            <div id="successNotificationDiv" class="alert alert-success alert-dismissable" style="display:none">
+            	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  				<p id="successNotificationMessage"></p>
+  			 </div>
 
             <div id="addInstructorModal" class="modal fade">
-                <form id="instructorForm" name="instructorForm" method="post" action="addNewInstructor" commandName="instructor">
-                    <div class="modal-dialog">
-                        <div class="modal-content" >
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">Instructor Form</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row" style="margin-bottom:5px">
-                                    <div class="col-md-8 col-xs-12">
-                                        <label>Instructor ID</label>
-                                        <input type="text" class="form-control input-sm" id="instructorId" name="instructorId">
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-bottom:5px">
-                                    <div class="col-md-4 col-xs-12">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control input-sm" id="firstName" name="firstName">
-                                    </div>
-                                    <div class="col-md-4 col-xs-12">
-                                        <label>Middle Name</label>
-                                        <input type="text" class="form-control input-sm" id="middleName" name="middleName">
-                                    </div>
-                                    <div class="col-md-4 col-xs-12">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control input-sm" id="lastName" name="lastName">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" id="btnSave" onclick="saveNewInstructor()" class="btn btn-lg btn-block btn-success">Save</button>
-                                <button type="button" class="btn btn-lg btn-block btn-danger" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+	            <div class="modal-dialog">
+	                <div class="modal-content" >
+	                    <div class="modal-header">
+	                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                        <h4 class="modal-title">Instructor Form</h4>
+	                    </div>
+	                    <div class="modal-body">
+	                        <div class="row" style="margin-bottom:5px">
+	                            <div class="col-md-8 col-xs-12">
+	                                <label>Instructor ID</label>
+	                                <input type="text" class="form-control input-sm" id="instructorId" name="instructorId" value="">
+	                            </div>
+	                        </div>
+	                        <div class="row" style="margin-bottom:5px">
+	                            <div class="col-md-4 col-xs-12">
+	                                <label>First Name</label>
+	                                <input type="text" class="form-control input-sm" id="firstName" name="firstName">
+	                            </div>
+	                            <div class="col-md-4 col-xs-12">
+	                                <label>Middle Name</label>
+	                                <input type="text" class="form-control input-sm" id="middleName" name="middleName">
+	                            </div>
+	                            <div class="col-md-4 col-xs-12">
+	                                <label>Last Name</label>
+	                                <input type="text" class="form-control input-sm" id="lastName" name="lastName">
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="modal-footer">
+	                        <button type="button" class="btn btn-lg btn-block btn-success" id="btnSave" onclick="saveNewInstructor()">Save</button>
+	                        <button type="button" class="btn btn-lg btn-block btn-danger" data-dismiss="modal">Cancel</button>
+	                    </div>
+	                </div>
+	            </div>
             </div> 
 
             <div id="deleteModal" class="modal fade">
-                <form id="deleteForm" name="deleteForm" method="post" action="deleteInstructor">
-	                <div class="modal-dialog">
-	                    <div class="modal-content">
-	                        <div class="modal-header">
-	                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	                            <h4 class="modal-title">Confirmation</h4>
-	                        </div>
-	                        <div class="modal-body">
-	                            <h4>Are you sure you want to delete this record?</h4>
-	                            <p class="text-warning"><small>You cannot recover deleted records</small></p>
-	                            <input type="hidden" id="deleteId" name="deleteId" value="">
-	                        </div>
-	                        <div class="modal-footer">
-	                            <button type="submit" class="btn btn-lg btn-block btn-danger">Delete</button>
-	                            <button type="button" class="btn btn-lg btn-block btn-default" data-dismiss="modal">Cancel</button>
-	                        </div>
-	                    </div>
-	                </div>
-                </form>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Are you sure you want to delete this record?</h4>
+                            <p class="text-warning"><small>You cannot recover deleted records</small></p>
+                            <input type="hidden" id="deleteId" name="deleteId" value="">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-lg btn-block btn-danger" id="btnDelete" onclick="deleteInstructor()">Delete</button>
+                            <button type="button" class="btn btn-lg btn-block btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             
 
@@ -162,7 +163,7 @@
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${instructors}" var="instructor">
-	                                        <tr>
+	                                        <tr id="instructorId${instructor.id}">
 	                                            <td><c:out value="${instructor.instructorId}"/></td>
 	                                            <td><c:out value="${instructor.lastName}"/>, <c:out value="${instructor.firstName}"/> <c:out value="${instructor.middleName}"/></td>
 	                                      		<td style="width: 100px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat" /></td>
@@ -186,20 +187,88 @@
     <script src="resources/sbadmin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
     <script src="resources/sbadmin/dist/js/sb-admin-2.js"></script>
     <script>
-    $(document).ready(function() {
-        $('#dataTables-instructors').DataTable({
-                responsive: true
-        });
-    });
-    
-    $('#deleteModal').on('show.bs.modal', function(e) {
-        var id = $(e.relatedTarget).data('id');
-        $('#deleteId').attr("value", id);
-    });
-
-    function saveNewInstructor() {
-        $('#instructorForm').submit();
-    }    </script>
+	    $(document).ready(function() {
+	        $('#dataTables-instructors').DataTable({
+	            responsive: true
+	        });
+	    });
+	    
+	    $('#deleteModal').on('show.bs.modal', function(e) {
+	        var id = $(e.relatedTarget).data('id');
+	        $('#deleteId').attr("value", id);
+	    });
+	    
+	    $('#addInstructorModal').on('show.bs.modal',function(e) {
+	    	$('#instructorId').val("");
+	    	$('#firstName').val("");
+	    	$('#middleName').val("");
+	    	$('#lastName').val("");
+	    });
+	    
+	    function saveNewInstructor() {
+	        var instructorId = $("#instructorId").val();
+	        var firstName = $("#firstName").val();
+	        var middleName = $("#middleName").val();
+	        var lastName = $("#lastName").val();
+	       	$.ajax({
+	       		type: 'POST',
+	       		url: 'addNewInstructor',
+	       		data: {'instructorId':instructorId, 'firstName':firstName, 'middleName':middleName, 'lastName':lastName},
+	       		async: true,
+	       		success: function(result) {
+	       			addNewInstructorToTable(instructorId);
+	       			$('#addInstructorModal').modal('toggle');
+	       			$('#successNotificationDiv').css('display','block');
+	       			$('#successNotificationMessage').text('Successfully added new instructor');
+	       		},
+	       		error:function(jqXHR,textStatus,errorThrown) {
+	       			alert(jqXHR.status + ' ' + jqXHR.responseText);
+	       		}
+	       	});
+	    }
+	    
+	    function deleteInstructor() {
+	    	var deleteId = $("#deleteId").attr("value");
+	    	$.ajax({
+	    		type: 'POST',
+	    		url: 'deleteInstructor',
+	    		data: {'deleteId':deleteId},
+	    		async: true,
+	    		success: function(result) {
+	    			$('#instructorId' + deleteId).remove();
+	    			$('#deleteModal').modal('toggle');
+	    			$('#successNotificationDiv').css('display','block');
+	    			$('#successNotificationMessage').text("Successfully deleted instructor");
+	    		},
+	    		error: function(jqXHR, textStatus, errorThrown) {
+	    			alertt(jqXHR.status + ' ' + jqXHR.responseText);
+	    		}
+	    	});
+	    }
+	    
+	    function addNewInstructorToTable(instructorId) {
+	    	$.ajax({
+	    		type: 'POST',
+	    		url:'getInstructorByInstructorId',
+	    		data: {'instructorId':instructorId},
+	    		dataType: 'json',
+	    		async: true,
+	    		success: function(result) {
+	    			var row = '<tr id="instructorId' + result.id + '">'
+	    			row += '<td>' + result.instructorId + '</td>';
+	    			row += '<td>' + result.lastName + ', ' + result.firstName + ' ' + result.middleName + '</td>';
+	    			row += '<td style="width: 100px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat"/></td>';	   
+	    			row += '<td style="width: 100px;"><input type="button" value="Delete" class="btn btn-xs btn-block btn-flat" data-toggle="modal" data-target="#deleteModal" data-id="' + result.id + '"/></td>';
+	    			row += '</tr>';
+	    			$('#dataTables-instructors tr:last').after(row);
+	    		},
+	    		erro: function(jqXHR, textStatus, errorThrown){
+	    			alert(jqXHR.status + ' ' + jqXHR.responseText);
+	    			alert(errorThrown);
+	    		}
+	    	});
+	    }
+    </script>
 </body>
 
 </html>

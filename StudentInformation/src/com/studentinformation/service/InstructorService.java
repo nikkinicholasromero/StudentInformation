@@ -24,4 +24,9 @@ public final class InstructorService {
 		InstructorDAO dao = BeanFactory.getInstructorDAO();
 		dao.deleteInstructorById(id);
 	}
+	
+	public static Instructor getInstructorByInstructorId(String instructorId) {
+		InstructorDAO dao = BeanFactory.getInstructorDAO();
+		return dao.getInstructorByInstructorId(instructorId);
+	}
 }
