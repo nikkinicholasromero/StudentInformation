@@ -136,7 +136,7 @@
 	                        <input type="hidden" id="deleteId" name="deleteId" value="">
 	                    </div>
 	                    <div class="modal-footer">
-	                           <button type="button" class="btn btn-lg btn-block btn-danger" id="btnDelete" onclick="deleteStudent()">Delete</button>
+	                        <button type="button" class="btn btn-lg btn-block btn-danger" id="btnDelete" onclick="deleteStudent()">Delete</button>
 	                        <button type="button" class="btn btn-lg btn-block btn-default" data-dismiss="modal">Cancel</button>
 	                    </div>
 	                </div>
@@ -197,7 +197,6 @@
             $('#deleteId').attr("value", id);
         });
 
-        
         $('#addStudentModal').on('show.bs.modal', function(e) {
         	$('#studentId').val("");
         	$('#firstName').val("");
@@ -226,25 +225,6 @@
    		        }
    		   });
         }
-
-        function deleteStudent() {
-        	var deleteId = $("#deleteId").attr("value");
-			$.ajax({
-   		        type: 'POST',
-   		        url:  'deleteStudent',
-   		        data: {'deleteId':deleteId},
-   		        async: true,
-   		        success: function(result) {
-   		         	$('#studentId' + deleteId).remove();
-   		        	$('#deleteModal').modal('toggle');
-   		        	$('#successNotificationDiv').css('display', 'block');
-   		        	$('#successNotificationMessage').text("Successfully delete student");
-   		        },
-   		        error: function(jqXHR, textStatus, errorThrown) {
-   		        	alert(jqXHR.status + ' ' + jqXHR.responseText);
-   		        }
-   		   });
-        }
         
         function addNewStudentToTable(studentId) {
         	$.ajax({
@@ -265,6 +245,25 @@
    		        error: function(jqXHR, textStatus, errorThrown) {
    		        	alert(jqXHR.status + ' ' + jqXHR.responseText);
    		        	alert(errorThrown);
+   		        }
+   		   });
+        }
+
+        function deleteStudent() {
+        	var deleteId = $("#deleteId").attr("value");
+			$.ajax({
+   		        type: 'POST',
+   		        url:  'deleteStudent',
+   		        data: {'deleteId':deleteId},
+   		        async: true,
+   		        success: function(result) {
+   		         	$('#studentId' + deleteId).remove();
+   		        	$('#deleteModal').modal('toggle');
+   		        	$('#successNotificationDiv').css('display', 'block');
+   		        	$('#successNotificationMessage').text("Successfully deleted student");
+   		        },
+   		        error: function(jqXHR, textStatus, errorThrown) {
+   		        	alert(jqXHR.status + ' ' + jqXHR.responseText);
    		        }
    		   });
         }
