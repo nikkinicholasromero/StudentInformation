@@ -36,15 +36,17 @@ public class StudentController {
 	public @ResponseBody void addNewStudent(HttpServletResponse response, @ModelAttribute("student") Student student) throws IOException {
 		StudentService.addStudent(student);
 	}
+	
+	@RequestMapping(value = "/getStudentByStudentId", method = RequestMethod.POST)
+	public @ResponseBody String getStudentByStudentId(@RequestParam("studentId") String studentId) throws JsonProcessingException {
+		Student student = StudentService.getStudentByStudentId(studentId);
+		return JSONUtility.parseJSON(student);
+	}
 
 	@RequestMapping(value = "/deleteStudent", method = RequestMethod.POST)
 	public @ResponseBody void deleteStudent(@RequestParam("deleteId") int deleteId) {
 		StudentService.deleteStudentById(deleteId);
 	}
 
-	@RequestMapping(value = "/getStudentByStudentId", method = RequestMethod.POST)
-	public @ResponseBody String getStudentByStudentId(@RequestParam("studentId") String studentId) throws JsonProcessingException {
-		Student student = StudentService.getStudentByStudentId(studentId);
-		return JSONUtility.parseJSON(student);
-	}
+	
 }

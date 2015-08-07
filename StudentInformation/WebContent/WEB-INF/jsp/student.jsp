@@ -191,11 +191,6 @@
                 responsive: true
             });
         });
-        
-        $('#deleteModal').on('show.bs.modal', function(e) {
-            var id = $(e.relatedTarget).data('id');
-            $('#deleteId').attr("value", id);
-        });
 
         $('#addStudentModal').on('show.bs.modal', function(e) {
         	$('#studentId').val("");
@@ -248,6 +243,11 @@
    		        }
    		   });
         }
+        
+        $('#deleteModal').on('show.bs.modal', function(e) {
+            var id = $(e.relatedTarget).data('id');
+            $('#deleteId').attr("value", id);
+        });
 
         function deleteStudent() {
         	var deleteId = $("#deleteId").attr("value");
@@ -260,7 +260,7 @@
    		         	$('#studentId' + deleteId).remove();
    		        	$('#deleteModal').modal('toggle');
    		        	$('#successNotificationDiv').css('display', 'block');
-   		        	$('#successNotificationMessage').text("Successfully deleted student");
+   		        	$('#successNotificationMessage').text("Successfully deleted student! Kindly refresh to see changes.");
    		        },
    		        error: function(jqXHR, textStatus, errorThrown) {
    		        	alert(jqXHR.status + ' ' + jqXHR.responseText);

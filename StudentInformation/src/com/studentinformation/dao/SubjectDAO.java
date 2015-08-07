@@ -41,10 +41,11 @@ public class SubjectDAO implements RowMapper<Subject> {
 		jdbcTemplate.update(SQL, subject.getSubjectCode(), subject.getTitle());
 	}
 
-	public void deleteSubject(int id) {
+	public void deleteSubjectById(int id) {
 		String SQL = "delete from subject where id = ?";
 		jdbcTemplate.update(SQL, id);
 	}
+	
 
 	@Override
 	public Subject mapRow(ResultSet rs, int rowNum) throws SQLException {

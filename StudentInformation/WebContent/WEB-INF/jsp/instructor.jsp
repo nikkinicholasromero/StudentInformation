@@ -193,58 +193,12 @@
 	        });
 	    });
 	    
-	    $('#deleteModal').on('show.bs.modal', function(e) {
-	        var id = $(e.relatedTarget).data('id');
-	        $('#deleteId').attr("value", id);
-	    });
-	    
 	    $('#addInstructorModal').on('show.bs.modal',function(e) {
 	    	$('#instructorId').val("");
 	    	$('#firstName').val("");
 	    	$('#middleName').val("");
 	    	$('#lastName').val("");
 	    });
-	    
-	    function saveNewInstructor() {
-	        var instructorId = $("#instructorId").val();
-	        var firstName = $("#firstName").val();
-	        var middleName = $("#middleName").val();
-	        var lastName = $("#lastName").val();
-	       	$.ajax({
-	       		type: 'POST',
-	       		url: 'addNewInstructor',
-	       		data: {'instructorId':instructorId, 'firstName':firstName, 'middleName':middleName, 'lastName':lastName},
-	       		async: true,
-	       		success: function(result) {
-	       			addNewInstructorToTable(instructorId);
-	       			$('#addInstructorModal').modal('toggle');
-	       			$('#successNotificationDiv').css('display','block');
-	       			$('#successNotificationMessage').text('Successfully added new instructor');
-	       		},
-	       		error:function(jqXHR,textStatus,errorThrown) {
-	       			alert(jqXHR.status + ' ' + jqXHR.responseText);
-	       		}
-	       	});
-	    }
-	    
-	    function deleteInstructor() {
-	    	var deleteId = $("#deleteId").attr("value");
-	    	$.ajax({
-	    		type: 'POST',
-	    		url: 'deleteInstructor',
-	    		data: {'deleteId':deleteId},
-	    		async: true,
-	    		success: function(result) {
-	    			$('#instructorId' + deleteId).remove();
-	    			$('#deleteModal').modal('toggle');
-	    			$('#successNotificationDiv').css('display','block');
-	    			$('#successNotificationMessage').text("Successfully deleted instructor");
-	    		},
-	    		error: function(jqXHR, textStatus, errorThrown) {
-	    			alertt(jqXHR.status + ' ' + jqXHR.responseText);
-	    		}
-	    	});
-	    }
 	    
 	    function addNewInstructorToTable(instructorId) {
 	    	$.ajax({
@@ -268,6 +222,54 @@
 	    		}
 	    	});
 	    }
+	    
+	    function saveNewInstructor() {
+	        var instructorId = $("#instructorId").val();
+	        var firstName = $("#firstName").val();
+	        var middleName = $("#middleName").val();
+	        var lastName = $("#lastName").val();
+	       	$.ajax({
+	       		type: 'POST',
+	       		url: 'addNewInstructor',
+	       		data: {'instructorId':instructorId, 'firstName':firstName, 'middleName':middleName, 'lastName':lastName},
+	       		async: true,
+	       		success: function(result) {
+	       			addNewInstructorToTable(instructorId);
+	       			$('#addInstructorModal').modal('toggle');
+	       			$('#successNotificationDiv').css('display','block');
+	       			$('#successNotificationMessage').text('Successfully added new instructor');
+	       		},
+	       		error:function(jqXHR,textStatus,errorThrown) {
+	       			alert(jqXHR.status + ' ' + jqXHR.responseText);
+	       		}
+	       	});
+	    }
+	    
+	    $('#deleteModal').on('show.bs.modal', function(e) {
+	        var id = $(e.relatedTarget).data('id');
+	        $('#deleteId').attr("value", id);
+	    });
+	    
+	    function deleteInstructor() {
+	    	var deleteId = $("#deleteId").attr("value");
+	    	$.ajax({
+	    		type: 'POST',
+	    		url: 'deleteInstructor',
+	    		data: {'deleteId':deleteId},
+	    		async: true,
+	    		success: function(result) {
+	    			$('#instructorId' + deleteId).remove();
+	    			$('#deleteModal').modal('toggle');
+	    			$('#successNotificationDiv').css('display','block');
+	    			$('#successNotificationMessage').text("Successfully deleted instructor! Kindly refresh to see changes.");
+	    		},
+	    		error: function(jqXHR, textStatus, errorThrown) {
+	    			alertt(jqXHR.status + ' ' + jqXHR.responseText);
+	    		}
+	    	});
+	    }
+	    
+	   
     </script>
 </body>
 

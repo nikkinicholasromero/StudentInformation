@@ -22,7 +22,7 @@ public final class SubjectService {
 	
 	public static void deleteSubjectById(int id) {
 		SubjectDAO dao = BeanFactory.getSubjectDAO();
-		dao.deleteSubject(id);
+		dao.deleteSubjectById(id);
 	}
 	
 	

@@ -24,7 +24,7 @@ public class RoomDAO implements RowMapper<Room> {
 		return room;
 	}
 
-	public Room getRoomByROomtCode(String roomCode) {
+	public Room getRoomByRoomCode(String roomCode) {
 		String SQL = "select * from room where room_code = ?";
 		Room room = jdbcTemplate.queryForObject(SQL, new Object[] { roomCode }, this);
 		return room;
