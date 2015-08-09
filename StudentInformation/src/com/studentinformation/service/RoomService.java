@@ -20,13 +20,13 @@ public final class RoomService {
 		dao.addRoom(room);
 	}
 	
-	public static void deleteRoomById(int id) {
-		RoomDAO dao = BeanFactory.getRoomDAO();
-		dao.deleteRoomById(id);
-	}
-	
 	public static Room getRoomByRoomCode(String roomCode) {
 		RoomDAO dao = BeanFactory.getRoomDAO();
 		return dao.getRoomByRoomCode(roomCode);
+	}
+	
+	public static void deleteRoomById(int id) {
+		RoomDAO dao = BeanFactory.getRoomDAO();
+		dao.deleteRoomById(id);
 	}
 }

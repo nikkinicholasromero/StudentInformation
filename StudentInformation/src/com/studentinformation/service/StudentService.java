@@ -20,15 +20,13 @@ public final class StudentService {
 		dao.addStudent(student);
 	}
 	
-	public static void deleteStudentById(int id) {
-		StudentDAO dao = BeanFactory.getStudentDAO();
-		dao.deleteStudentById(id);
-	}
-	
 	public static Student getStudentByStudentId(String studentId) {
 		StudentDAO dao = BeanFactory.getStudentDAO();
 		return dao.getStudentByStudentId(studentId);
 	}
 	
-	
+	public static void deleteStudentById(int id) {
+		StudentDAO dao = BeanFactory.getStudentDAO();
+		dao.deleteStudentById(id);
+	}
 }

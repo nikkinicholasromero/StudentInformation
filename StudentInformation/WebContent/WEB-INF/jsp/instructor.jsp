@@ -261,15 +261,13 @@
 	    			$('#instructorId' + deleteId).remove();
 	    			$('#deleteModal').modal('toggle');
 	    			$('#successNotificationDiv').css('display','block');
-	    			$('#successNotificationMessage').text("Successfully deleted instructor! Kindly refresh to see changes.");
+	    			$('#successNotificationMessage').text("Successfully deleted instructor!");
 	    		},
 	    		error: function(jqXHR, textStatus, errorThrown) {
 	    			alertt(jqXHR.status + ' ' + jqXHR.responseText);
 	    		}
 	    	});
 	    }
-	    
-	   
     </script>
 </body>
 

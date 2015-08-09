@@ -163,7 +163,7 @@
 									</thead>
 									<tbody>
 										<c:forEach items="${rooms}" var="room">
-											<tr>
+											<tr id="roomCode${room.id}">
 												<td><c:out value="${room.roomCode}" /></td>
 												<td><c:out value="${room.name}" /></td>
 												<td style="width: 100px;"><input type="button"
@@ -234,7 +234,7 @@
     			row += '<td>' + result.roomCode + '</td>';
     			row += '<td>' + result.name + '</td>';
     			row += '<td style="width: 100px;"><input type="button" value="Update" class="btn btn-xs btn-block btn-flat"</td>';
-    			row += '<td style="width: 100px;"><input type="button" value="Delete" class="btn btn-xs btn-block btn-flat data-toggle="modal" data-target="#deleteModal" data-id="' + result.id + '"/></td>';
+    			row += '<td style="width: 100px;"><input type="button" value="Delete" class="btn btn-xs btn-block btn-flat" data-toggle="modal" data-target="#deleteModal" data-id="' + result.id + '"/></td>';
     			row += '</tr>';
     			$('#dataTables-rooms tr:last').after(row);
     		},
@@ -261,7 +261,7 @@
     			$('#roomCode' + deleteId).remove();
     			$('#deleteModal').modal('toggle');
     			$('#successNotificationDiv').css('display', 'block');
-    			$('#successNotificationMessage').text("Successfully deleted room! Kindly refresh to see changes.")
+    			$('#successNotificationMessage').text("Successfully deleted room!")
     		},
     		error: function(jqXHR, textStatus, errorThrown) {
 		       alert(jqXHR.status + ' ' + jqXHR.responseText);

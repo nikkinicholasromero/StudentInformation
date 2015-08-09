@@ -260,7 +260,7 @@
    		         	$('#studentId' + deleteId).remove();
    		        	$('#deleteModal').modal('toggle');
    		        	$('#successNotificationDiv').css('display', 'block');
-   		        	$('#successNotificationMessage').text("Successfully deleted student! Kindly refresh to see changes.");
+   		        	$('#successNotificationMessage').text("Successfully deleted student!");
    		        },
    		        error: function(jqXHR, textStatus, errorThrown) {
    		        	alert(jqXHR.status + ' ' + jqXHR.responseText);

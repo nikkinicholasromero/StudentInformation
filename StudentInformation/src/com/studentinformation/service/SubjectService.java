@@ -20,6 +20,11 @@ public final class SubjectService {
 		dao.addSubject(subject);
 	}
 	
+	public static Subject getSubjectBySubjectCode(String subjectCode) {
+		SubjectDAO dao = BeanFactory.getSubjectDAO();
+		return dao.getSubjectBySubjectCode(subjectCode);
+	}
+	
 	public static void deleteSubjectById(int id) {
 		SubjectDAO dao = BeanFactory.getSubjectDAO();
 		dao.deleteSubjectById(id);

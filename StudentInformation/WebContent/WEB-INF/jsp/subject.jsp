@@ -109,8 +109,7 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" id="btnSave" onclick="saveNewSubject()"
-									class="btn btn-lg btn-block btn-success">Save</button>
+								<button type="button" class="btn btn-lg btn-block btn-success"  id="btnSave" onclick="saveNewSubject()">Save</button>
 								<button type="button" class="btn btn-lg btn-block btn-danger"
 									data-dismiss="modal">Cancel</button>
 							</div>
@@ -120,30 +119,27 @@
 			</div>
 
 			<div id="deleteModal" class="modal fade">
-				<form id="deleteForm" name="deleteForm" method="post"
-					action="deleteSubject">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true">&times;</button>
-								<h4 class="modal-title">Confirmation</h4>
-							</div>
-							<div class="modal-body">
-								<h4>Are you sure you want to delete this record?</h4>
-								<p class="text-warning">
-									<small>You cannot recover deleted records</small>
-								</p>
-								<input type="hidden" id="deleteId" name="deleteId" value="">
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-lg btn-block btn-danger" id="btnDelete" onclick="deleteSubject()">Delete</button>
-								<button type="button" class="btn btn-lg btn-block btn-default"
-									data-dismiss="modal">Cancel</button>
-							</div>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Confirmation</h4>
+						</div>
+						<div class="modal-body">
+							<h4>Are you sure you want to delete this record?</h4>
+							<p class="text-warning">
+								<small>You cannot recover deleted records</small>
+							</p>
+							<input type="hidden" id="deleteId" name="deleteId" value="">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-lg btn-block btn-danger" id="btnDelete" onclick="deleteSubject()">Delete</button>
+							<button type="button" class="btn btn-lg btn-block btn-default"
+								data-dismiss="modal">Cancel</button>
 						</div>
 					</div>
-				</form>
+				</div>
 			</div>
 
 			<div class="row">
@@ -164,7 +160,7 @@
 									</thead>
 									<tbody>
 										<c:forEach items="${subjects}" var="subject">
-											<tr>
+											<tr id="subjectCode${subject.id}">
 												<td><c:out value="${subject.subjectCode}" /></td>
 												<td><c:out value="${subject.title}" /></td>
 												<td style="width: 100px;"><input type="button"
@@ -268,7 +264,7 @@
     			$('#subjectCode' + deleteId).remove();
     			$('#deleteModal').modal('toggle');
     			$('#successNotificationDiv').css('display', 'block');
-    			$('#successNotificationMessage').text("Successfully deleted subject! Kindly refresh to see changes.")
+    			$('#successNotificationMessage').text("Successfully deleted subject!")
     		},
 	        error: function(jqXHR, textStatus, errorThrown) {
 	        	alert(jqXHR.status + ' ' + jqXHR.responseText);
